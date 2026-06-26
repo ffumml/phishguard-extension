@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Click Pro — Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+        }
+        .plans {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .plan {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            width: 300px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .plan.pro {
+            border-color: #f59e0b;
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.2);
+        }
+        .price {
+            font-size: 42px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .price small {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+        button.pro-btn {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+        }
+        .features {
+            text-align: left;
+            margin: 20px 0;
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .features li::before {
+            content: "✅ ";
+            margin-right: 8px;
+        }
+        .disabled {
+            opacity: 0.5;
+        }
+        .disabled li::before {
+            content: "❌ ";
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ Secure Click </h1>
+        <div class="plans">
+            <div class="plan">
+                <h2>Free</h2>
+                <div class="price">0 ₽</div>
+                <ul class="features">
+                    <li>10 проверок в день</li>
+                    <li>Базовая защита</li>
+                    <li>Чёрный список</li>
+                    <li>История проверок</li>
+                </ul>
+                <button disabled style="opacity: 0.5;">Текущий план</button>
+            </div>
+            <div class="plan pro">
+                <h2>⭐ Pro</h2>
+                <div class="price">500 ₽<small>/мес</small></div>
+                <ul class="features">
+                    <li>Безлимитные проверки</li>
+                    <li>Приоритетная поддержка</li>
+                    <li>Ранний доступ к новым функциям</li>
+                    <li>Улучшенная защита</li>
+                    <li>Анти-трекинг</li>
+                </ul>
+                <button class="pro-btn" id="upgradeBtn">💎 Оформить Pro</button>
+            </div>
+        </div>
+    </div>
+
+<script src="premium.js"></script>
+</body>
+</html>

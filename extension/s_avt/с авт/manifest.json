@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "Secure Click",
+  "version": "3.0.0",
+  "description": "Умный детектор фишинговых сайтов с подпиской Firebase",
+  
+  "icons": {
+    "16": "icons/icon.png",
+    "48": "icons/icon.png",
+    "128": "icons/icon.png"
+  },
+  
+  "action": {
+    "default_icon": {
+      "16": "icons/icon.png",
+      "48": "icons/icon.png",
+      "128": "icons/icon.png"
+    },
+    "default_title": "Secure Click - Защита от фишинга",
+    "default_popup": "popup.html"
+  },
+  
+  "permissions": [
+    "tabs", 
+    "activeTab", 
+    "storage", 
+    "webNavigation"
+  ],
+  
+  "host_permissions": [
+    "<all_urls>",
+"file://*/*"
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["libs/jsQR.js", "qr-scanner.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "web_accessible_resources": [{
+    "resources": ["auth-panel.html", "popup.html", "premium.html", "premium.js", "icons/*"],
+    "matches": ["<all_urls>"]
+  }]
+}

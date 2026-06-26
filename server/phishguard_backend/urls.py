@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from django.views.generic import TemplateView
+admin.site.site_header = "Security Click Admin"
+admin.site.site_title = "Security Click"
+admin.site.index_title = "Добро пожаловать в Security Click"
+admin.site.favicon = "/static/favicon.ico"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path('payment-success', TemplateView.as_view(template_name='payment_success.html'), name='payment-success'),
 ]

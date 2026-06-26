@@ -94,3 +94,7 @@ dmypy.json
 
 # PyCharm (закомментировано, раскомментируй если нужно)
 # .idea/
+".env" 
+"db.sqlite3" 
+"__pycache__/" 
+"*.pyc" 

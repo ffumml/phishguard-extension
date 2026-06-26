@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Оплата успешна</title>
+    <style>
+        body {
+            background: #0f172a;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #10b981;
+        }
+        h1 { color: #10b981; }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✅ Оплата успешна!</h1>
+        <p>Ваш аккаунт обновлён до Premium.</p>
+        <p>Теперь у вас безлимитные проверки.</p>
+	<p>Это окно закроется через 3 секунды</p>
+        <button id="closeBtn">Закрыть окно</button>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session');
+
+        function closeTab() {
+            if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
+                chrome.runtime.sendMessage({ type: 'CLOSE_CURRENT_TAB' });
+            } else {
+                window.close();
+            }
+        }
+
+        if (sessionId) {
+            fetch(`/api/upgrade/confirm?session=${sessionId}`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log('Confirm response:', data);
+                    if (data.is_premium) {
+    alert('Аккаунт обновлён до Premium! Перезагрузите расширение, чтобы увидеть изменения.');
+    setTimeout(() => window.close(), 3000);
+}
+                })
+                .catch(err => {
+                    console.error('Error:', err);
+                    setTimeout(closeTab, 3000);
+                });
+        } else {
+            setTimeout(closeTab, 3000);
+        }
+
+        document.getElementById('closeBtn').addEventListener('click', closeTab);
+    </script>
+</body>
+</html>
