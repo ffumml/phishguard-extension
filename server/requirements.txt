@@ -15,4 +15,4 @@ sqlparse==0.5.5
 tzdata==2026.1
 urllib3==2.6.3
 beautifulsoup4==4.12.3
-dj-database-urllib3
+dj-database-url
